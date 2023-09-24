@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
         attack1CooldownCounter = 0;
         playerHealthSO.ResetHealth();
         dreamShardManager.setCurrencyCount(0);
+        dreamThreadManager.setCurrencyCount(0);
     }
 
     private void Start()
