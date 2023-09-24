@@ -1725,6 +1725,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 162009830}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: aaeef12fe738e4240b7f6d0f0db12bf8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1643372224}
     - targetCorrespondingSourceObject: {fileID: 5170458951842637540, guid: aaeef12fe738e4240b7f6d0f0db12bf8,
         type: 3}
       insertIndex: -1
@@ -5101,6 +5105,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09608ae500e169b4786407c5831f6dcb, type: 3}
+--- !u!1 &1643372222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643372224}
+  - component: {fileID: 1643372223}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1643372223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643372222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c0b9fa435994d1db23ed8d4f8aedee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1643372224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643372222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 361044302}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1683201393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1191207924846191750, guid: 09608ae500e169b4786407c5831f6dcb,
@@ -6296,6 +6344,8 @@ MonoBehaviour:
   collidableLayers:
     serializedVersion: 2
     m_Bits: 1088
+  dreamShardManager: {fileID: 1643372223}
+  testing: 1
   playerHealthSO: {fileID: 11400000, guid: 33dac87c2e381db4798eb0f06d68916c, type: 2}
   bufferDecreaseRate: 8
   maxRegenHitCooldown: 2.5

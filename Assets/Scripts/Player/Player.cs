@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerRadius = 1.5f;
     [SerializeField] private float playerHeight = 6f;
     [SerializeField] private LayerMask collidableLayers;
+    [SerializeField] private CurrencyManager dreamShardManager;
+    [SerializeField] private CurrencyManager dreamThreadManager;
 
     public static Player Instance { get; private set; }
     private enum State
@@ -42,7 +44,7 @@ public class Player : MonoBehaviour
     private bool IsDead;
     public float playerHitIFrames = 1f;
     private float currentIFrameTimer = 0f;
-    
+
     public event UnityAction updateHealthBar;
     private void Awake()
     {
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
         attack1Cooldown = weapon.GetAttackCooldown();
         attack1CooldownCounter = 0;
         playerHealthSO.ResetHealth();
+        dreamShardManager.setCurrencyCount(0);
     }
 
     private void Start()
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
     {
         HandleDrowsiness();
         attack1CooldownCounter -= Time.deltaTime;
-        if(IsIdle() || IsWalking())
+        if (IsIdle() || IsWalking())
             HandleMovement();
     }
     public void PlaySteps(string path)
@@ -155,7 +158,7 @@ public class Player : MonoBehaviour
 
     private void HandleDrowsiness()
     {
-        if(currentIFrameTimer <= playerHitIFrames)
+        if (currentIFrameTimer <= playerHitIFrames)
         {
             currentIFrameTimer += Time.deltaTime;
         }
@@ -169,31 +172,32 @@ public class Player : MonoBehaviour
             bufferOnCooldown = true;
             currentBufferCooldown -= Time.deltaTime;
         }
-        
+
         if (!bufferOnCooldown)
         {
             updateHealthBar?.Invoke();
             playerHealthSO.RegenBuffer(bufferDecreaseRate * Time.deltaTime);
         }
     }
-    
+
     public void HandleHit(float bufferDamage)
     {
         if (IsDead)
             return;
         if (currentIFrameTimer <= playerHitIFrames)
             return;
-        
+
         currentBufferCooldown = maxRegenHitCooldown;
-        
+
         playerHealthSO.InflictDamage(bufferDamage);
         updateHealthBar?.Invoke();
-        
+
         if (playerHealthSO.CurrentDrowsiness <= 0)
         {
             IsDead = true;
         }
     }
+
 
     public bool IsWalking() => state == State.Walk;
     public bool IsIdle() => state == State.Idle;
